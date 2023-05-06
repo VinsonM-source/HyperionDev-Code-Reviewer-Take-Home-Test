@@ -1,0 +1,70 @@
+So in this case the output of this code should return "THE QUICK BROWN DOG JUMPED 
+OVER THE LAZY FOX." which in this instance is a result of applying a Caesar cipher 
+with a shift of 39 to the input string "GUR DHVPX OEBJA QBT WHZCRQ BIRE GUR YNML SBK."
+
+The caesar_cipher function in this instance here will take two parameters: string 
+which is the input string to be encoded and then the shift which is the number of 
+characters to shift each of the characters in the string by.
+
+The function will first define an alphabet variable which in this case is a string 
+which contains all of the uppercase letters of the English alphabet. It will then 
+initialise an empty string variable encodedText to hold the encoded result.
+
+Should the shift value be greater than 26 whcih is the the length of the English 
+alphabet, then the function will take the remainder of shift divided by 26 to make 
+sure that the shift value is within the range of the English alphabet.
+
+This specific function will now then iterate through each of the characters of 
+the input string. If the character is a valid alphabet character, it will then find 
+the index of the character in the English alphabet string and then adds the shift 
+value to it. If the resulting index is within the range of the Englishalphabet, 
+the character at the new index will now be added to the encodedText string. 
+If not then, then the character at the index shifted by shift minus 26, for exapmle, 
+wrapped around to the beginning of the English alphabet is added to the encodedText 
+string.
+
+Should the character not be a valid alphabet character, for exapmle a special character, 
+it will now simply be added to the encodedText string.
+
+Lastly, the function will return the encodedText string, which should have the result 
+of using the Caesar cipher with the given shift value to the input string.
+
+Take a look at the fixed code below:
+
+function caesarCipher(str: string, shift: number): string {
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    let charCode = str.charCodeAt(i);
+    if (charCode >= 65 && charCode <= 90) {
+      result += String.fromCharCode(((charCode - 65 + shift) % 26) + 65);
+    } else if (charCode >= 97 && charCode <= 122) {
+      result += String.fromCharCode(((charCode - 97 + shift) % 26) + 97);
+    } else {
+      result += str.charAt(i);
+    }
+  }
+  return result;
+}
+
+const encoded = caesarCipher("GUR DHVPX OEBJA QBT WHZCRQ BIRE GUR YNML SBK.", 39);
+console.log(encoded); // Output: THE QUICK BROWN DOG JUMPED OVER THE LAZY FOX.
+
+The caesarCipher function takes two arguments: str, which is the string to be encoded
+iinthis case and shift, which will noow be the number of positions to shift each 
+character in the string.
+
+The function will now then loop over each character in the string and then will check 
+if whether it is a letter of the English alphabet or not. If it is a uppercase letter, 
+meaning if is between 65 and 90 in the Unicode, the function will apply the Caesar 
+Cipher shift by subtracting 65 which is the Unicode value of "A" in thhis instance 
+from the character code, thus meaning that it will addi the shift value, taking 
+the result modulo 26 to wrap around the English alphabet if thhere is a necessity and 
+then it will add 65 back to get the new character code. This function will performs 
+similar operations for the lowercase letters of the alphabet between 97 and 122 in thhe 
+Unicode. Should the character not be a letter, the function will now simply add it to 
+the result string without changing it.
+
+Lastly the function will return the encoded string, which in this case will be 
+"THE QUICK BROWN DOG JUMPED OVER THE LAZY FOX." for the inputs that are given to us.
+
+Errors detected are at line: from line from 1 to line 51

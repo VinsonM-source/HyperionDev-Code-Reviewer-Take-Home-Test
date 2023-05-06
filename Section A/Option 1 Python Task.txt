@@ -1,0 +1,30 @@
+The code that you have given me does seem to have an error in the indentation of 
+the definition of the groupAnagrams function. This means that it can cause a syntax 
+error. Here's the corrected code that I have done for you below:
+
+class Solution:
+    def groupAnagrams(self, strs):
+        result = {}
+        for i in strs:
+            x = "".join(sorted(i))
+            if x in result:
+                result[x].append(i)
+            else:
+                result[x] = [i]
+        return list(result.values())
+ob1 = Solution()
+print(ob1.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+
+In the above code that I have provided for you, this code will bring up a solution 
+for grouping anagrams in the given input list strs. It will do this for you by creating 
+a dictionary result, this will be where each key will be a sorted string of characters 
+from a word in the list and each value will be a list of words that have the
+same sorted string. The function will now then then bring back a list of the values that 
+are in this dictionary.
+
+As an example that is given above, in the given input list ["eat", "tea", "tan", "ate", 
+"nat", "bat"], the words "eat" and "tea" are anagrams, as are "tan", "nat", and "ate". 
+that will now mean taht the function should return the list [['eat', 'tea', 'ate'], 
+['tan', 'nat'], ['bat']], which is now the expected output from the examplle.
+
+Errors detected are at line: 5 x = "".join(sorted(i))
